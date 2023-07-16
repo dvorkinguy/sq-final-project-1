@@ -16,15 +16,38 @@ Creating From Jenkins Instance Jenkins instance. Master + Slave.
 eksctl create cluster --name notjustdevops --version 1.27 --region us-west-2 --nodegroup-name njd-nodes --node-type t2.medium --nodes 4
 
 
-
-eksctl scale nodegroup --cluster flask-datta-able --name linux-nodes --nodes-max 4 --region us-west-2
-eksctl scale nodegroup --cluster flask-datta-able --name linux-nodes --nodes 4 --region us-west-2
-
-eksctl get nodegroup --cluster flask-datta-able --region us-west-2 --name linux-nodes
+eksctl get nodegroup --cluster notjustdevops --region us-west-2 --name njd-nodes
 
 #------------------------------------------------------------------
 
 kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
+
+kubectl get svc --namespace projectcontour
+
+#-------------------------------------------------------------------
+  511  nano deployment.yaml
+  514  k create -f deployment.yaml
+
+  515  nano services.yaml
+  516  k create -f services.yaml 
+
+  517  nano ingress-hosts.yaml
+  518  k create -f ingress-hosts.yaml 
+
+  520  kubectl get all --all-namespaces
+  521  history
+
+#-----------------------------------------
+
+k describe ingress
+
+change AWS ROUTE53 records
+A and CNAME
+to new Ingress LoadBalancer
+
+#-------------------------------------------
+Manual
+#-----------------------
 
 k create deployment app --image=dvorkinguy/simple-flask-app:3.1.0
 k create deployment main --image=dvorkinguy/simple-flask-app:3.1.0
