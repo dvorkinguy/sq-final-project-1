@@ -1,3 +1,7 @@
+/home/ubuntu/projects/sq-final-project-1/pull_changes.sh
+
+#--------------------------------------------------------
+
 sudo -i -u jenkins
 aws configure
 exit jenkins
@@ -91,9 +95,20 @@ k logs app-5bbd6898c7-lvw7h
 http://app.notjustdevops.com:5005/
 
 --namespace flask-datta-able
-____________________________________________
+
+#---------------------------------------------
+
+ubuntu@ip-172-31-10-23:~/projects/sq-final-project-1$ /home/ubuntu/projects/sq-final-project-1/pull_changes.sh 
+
+/home/ubuntu/projects/sq-final-project-1/pull_changes.sh
+
+
+
+
+#---------------------------------------------------
 
 https://www.youtube.com/watch?v=8ULmDxTzAVQ&list=PL3SzV1_k2H1VDePbSWUqERqlBXIk02wCQ&index=16
+
 16 - Настройка HTTPS для web-app в Kubernetes. NGINX Ingress и cert manager. Let's Encrypt
 
 curl -H "Host: app.notjustdevops.com" a71d1359489b24277aae6d075a435e74-842181737.us-west-2.elb.amazonaws.com
