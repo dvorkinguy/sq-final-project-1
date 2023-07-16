@@ -17,7 +17,7 @@ spec:
     - simple.notjustdevops.com
     - java.notjustdevops.com
     - notjustdevops.com
-    secretName: app-tls
+    secretName: app-tls  # Add the secretName to store the SSL/TLS certificate
   rules:
   - host: notjustdevops.com
     http:
