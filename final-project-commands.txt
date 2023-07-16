@@ -9,6 +9,12 @@ or
 chown -R jenkins:jenkins /var/lib/jenkins/.aws
 chown -R jenkins:jenkins /var/lib/jenkins/.kube
 
+
+jenkins-token
+11fcc26b886b6ba5548716f57b9184a2b3
+
+
+
 #----------------------------------------------------------------
 
 Creating From Jenkins Instance Jenkins instance. Master + Slave.
@@ -87,5 +93,25 @@ http://app.notjustdevops.com:5005/
 --namespace flask-datta-able
 ____________________________________________
 
+https://www.youtube.com/watch?v=8ULmDxTzAVQ&list=PL3SzV1_k2H1VDePbSWUqERqlBXIk02wCQ&index=16
+16 - Настройка HTTPS для web-app в Kubernetes. NGINX Ingress и cert manager. Let's Encrypt
 
+curl -H "Host: app.notjustdevops.com" a71d1359489b24277aae6d075a435e74-842181737.us-west-2.elb.amazonaws.com
+
+____________________________________________
+
+nslookup
+a71d1359489b24277aae6d075a435e74-842181737.us-west-2.elb.amazonaws.com
+
+Non-authoritative answer:
+Name:   a71d1359489b24277aae6d075a435e74-842181737.us-west-2.elb.amazonaws.com
+Address: 52.33.178.72
+Name:   a71d1359489b24277aae6d075a435e74-842181737.us-west-2.elb.amazonaws.com
+Address: 44.240.106.231
+Name:   a71d1359489b24277aae6d075a435e74-842181737.us-west-2.elb.amazonaws.com
+Address: 52.27.233.152
+
+Cert Manager
+
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml
 
