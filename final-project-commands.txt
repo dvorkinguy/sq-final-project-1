@@ -1,0 +1,67 @@
+sudo -i -u jenkins
+aws configure
+exit jenkins
+sudo cp ~/.kube/config ~jenkins/.kube/
+sudo chown -R jenkins: ~jenkins/.kube/
+
+or 
+
+chown -R jenkins:jenkins /var/lib/jenkins/.aws
+chown -R jenkins:jenkins /var/lib/jenkins/.kube
+
+#----------------------------------------------------------------
+
+Creating From Jenkins Instance Jenkins instance. Master + Slave.
+
+eksctl create cluster --name notjustdevops --version 1.27 --region us-west-2 --nodegroup-name njd-nodes --node-type t2.medium --nodes 4
+
+
+
+eksctl scale nodegroup --cluster flask-datta-able --name linux-nodes --nodes-max 4 --region us-west-2
+eksctl scale nodegroup --cluster flask-datta-able --name linux-nodes --nodes 4 --region us-west-2
+
+eksctl get nodegroup --cluster flask-datta-able --region us-west-2 --name linux-nodes
+
+#------------------------------------------------------------------
+
+kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
+
+k create deployment app --image=dvorkinguy/simple-flask-app:3.1.0
+k create deployment main --image=dvorkinguy/simple-flask-app:3.1.0
+k create deployment simple --image=dvorkinguy/simple-flask-app:3.1.0
+k create deployment java --image=tomcat:8.5.38
+
+k scale deployment app --replicas 2
+k scale deployment main --replicas 2
+k scale deployment simple --replicas 2
+k scale deployment java --replicas 2
+
+k expose deployment app --port=5000
+k expose deployment main --port=5000
+k expose deployment simple --port=5000
+k expose deployment java --port=8080
+
+#---------------------------------------------------------------
+
+k delete svc --all -n your-namespace
+k delete -f ingress-hosts.yaml
+kubectl delete deployment --all
+
+#---------------------------------------------------------------
+
+nano ingress-hosts.yaml
+k apply -f ingress-hosts.yaml 
+k get all --all-namespaces -o wide
+
+eksctl utils write-kubeconfig --cluster=flask-datta-able
+cat /home/ubuntu/.kube/config
+
+k get pods
+k logs app-5bbd6898c7-lvw7h
+http://app.notjustdevops.com:5005/
+
+--namespace flask-datta-able
+____________________________________________
+
+
+

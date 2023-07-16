@@ -1,0 +1,50 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-hosts
+  labels:
+    name: ingress-hosts
+  annotations:
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+spec:
+  rules:
+  - host: notjustdevops.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: main
+            port:
+              number: 5000
+  - host: simple.notjustdevops.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: simple
+            port:
+              number: 5000
+  - host: java.notjustdevops.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: java
+            port:
+              number: 8080
+  - host: app.notjustdevops.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: app
+            port:
+              number: 5000
