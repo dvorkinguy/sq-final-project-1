@@ -130,3 +130,12 @@ Cert Manager
 
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml
 
+#-----------------------------------
+
+k get clusterissuer.cert-manager.io
+NAME                  READY   AGE
+letsencrypt-prod      True    43s
+letsencrypt-staging   True    57s
+
+#--------------------------------------------------
+
