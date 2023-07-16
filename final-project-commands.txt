@@ -30,8 +30,9 @@ kubectl get svc --namespace projectcontour
 
   515  nano services.yaml
   516  k create -f services.yaml 
-
-  517  nano ingress-hosts.yaml
+ 
+ 
+  517  nano  ingress-hosts.yaml
   518  k create -f ingress-hosts.yaml 
 
   520  kubectl get all --all-namespaces
